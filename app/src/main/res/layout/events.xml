@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/row_layout">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventTitle"
+        android:hint="Wpisz nazwe wydarzenia"/>
+
+
+
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Priorytet wydarzenia:"/>
+    <RadioGroup
+        android:id="@+id/event_prio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+
+        <RadioButton
+            android:id="@+id/chkLow"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Niski"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/chkMedium"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Średni"
+             />
+
+        <RadioButton
+            android:id="@+id/chkHigh"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wysoki" />
+
+    </RadioGroup>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+       <TextView
+
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_weight="2.8"
+           android:gravity="center_vertical"
+           android:text="Data wydarzenia:"
+           android:textSize="20dp"
+           android:textStyle="bold"></TextView>
+       <TextView
+           android:id="@+id/dateevent"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_weight="3"
+           android:gravity="center_vertical"
+         android:hint="Data"
+           android:textSize="20dp"
+           >
+       </TextView>
+
+       <Button
+           android:id="@+id/calendar"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="4.2"
+           android:background="@android:drawable/ic_menu_my_calendar"></Button>
+
+
+
+   </LinearLayout>
+  <!--  <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Niski"
+        android:id="@+id/priorityLow"/>
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sredni"
+        android:id="@+id/priorityMiddle"/>
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wysoki"
+        android:id="@+id/priorityHigh"/>-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventDescription"
+        android:hint="Opis wydarzenia"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/BTN_ADD"
+        android:text="Dodaj event"/>
+
+</LinearLayout>
