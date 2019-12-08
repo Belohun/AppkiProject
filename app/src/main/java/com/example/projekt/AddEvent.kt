@@ -36,7 +36,7 @@ class AddEvent : AppCompatActivity(){
                     else -> "brak priorytetu"
                 }),
                  eventDescription.text.toString(),
-                dateevent.text.toString()
+                dateevent.text.toString(),"Rozpoczęte"
             )
             if (event.desc == null  || event.title == null ||event.dateeve== null ){
                 Toast.makeText(applicationContext,"Proszę uzupełnić wszystkie pola",Toast.LENGTH_SHORT).show()
@@ -54,7 +54,7 @@ class AddEvent : AppCompatActivity(){
         val day = c.get(Calendar.DAY_OF_MONTH)
 calendar.setOnClickListener{
     val dpd = DatePickerDialog(this,DatePickerDialog.OnDateSetListener{ _: DatePicker?, Myear: Int, Mmonth: Int, dayOfMonth: Int ->
-       dateevent.setText(""+dayOfMonth+"/"+""+ (Mmonth+1) +"/"+ Myear)}, year, month , day)
+       dateevent.setText(""+Myear+"-"+""+ (Mmonth+1) +"-"+ dayOfMonth)}, year, month , day)
     dpd.show()
 }
 //        fab.setOnClickListener { view ->

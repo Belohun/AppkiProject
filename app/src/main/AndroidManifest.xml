@@ -23,5 +23,9 @@ package="com.example.projekt">
         android:theme="@style/AppTheme.NoActionBar">
 
     </activity>
+    <activity android:name=".EditEvent"
+        android:theme="@style/AppTheme.NoActionBar">
+
+    </activity>
 </application>
 </manifest>

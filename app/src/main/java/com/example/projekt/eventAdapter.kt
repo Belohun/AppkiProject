@@ -1,22 +1,17 @@
 package com.example.projekt
 
 import android.content.Context
-import android.content.Intent
-import android.icu.text.CaseMap
-import android.os.Parcel
-import android.os.Parcelable
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
-import androidx.annotation.MainThread
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.tasks.view.*
+import androidx.core.content.ContextCompat.startActivity
+import android.content.Intent
 
-class eventAdapter(context: Context, var llstEvent: List<Event>): RecyclerView.Adapter<eventAdapter.ViewHolder>() {
+
+
+class eventAdapter(context: Context, var llstEvent: ArrayList<Event>): RecyclerView.Adapter<eventAdapter.ViewHolder>() {
 
     val context = context
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -41,7 +36,6 @@ class eventAdapter(context: Context, var llstEvent: List<Event>): RecyclerView.A
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         lateinit var db: Database
-        lateinit var mn: MainActivity
         db = Database(context)
         var events : Event = llstEvent[position]
         holder.title.text = events.title
@@ -52,12 +46,27 @@ class eventAdapter(context: Context, var llstEvent: List<Event>): RecyclerView.A
         holder.dateeve.text = events.dateeve
         holder.button.setOnClickListener{
           /* Toast.makeText(context,"TESCIK ${events.id}",Toast.LENGTH_SHORT).show()*/
-        db.del_even(events.id.toString())
+        db.del_even(events.id.toString(
+        ))
+          /*  val intent = Intent(it.context, MainActivity::class.java)
+            it.context.startActivity(intent)*/
+            llstEvent.removeAt(position)
             notifyItemRemoved(position)
+
 
         }
 
         holder.itemView.setOnClickListener{
+           /* val intent = Intent(this.context, EditEvent::class.java)
+            startActivity(this.context, intent,null ) */
+            val intent = Intent(it.context, EditEvent::class.java)
+            intent.putExtra("id",events.id)
+            intent.putExtra("title",events.title)
+            intent.putExtra("desc",events.desc)
+            intent.putExtra("status",events.status)
+            intent.putExtra("prio",events.prio)
+            intent.putExtra("dateeve",events.dateeve)
+            it.context.startActivity(intent)
 
         }
 

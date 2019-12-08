@@ -13,13 +13,14 @@ class Event{
     var dateeve: String?= null
 
 constructor()
-constructor(id: String,title:String,prio:String,/*status:String,*/desc:String,dateeve:String)
+constructor(id: String,title:String,prio:String,/*status:String,*/desc:String,dateeve:String,status: String)
 {
+
     this.id = id
     this.dateeve = dateeve
     this.title=title
     this.prio=prio
-  /*  this.status=status*/
+    this.status=status
     this.desc=desc
 }
 

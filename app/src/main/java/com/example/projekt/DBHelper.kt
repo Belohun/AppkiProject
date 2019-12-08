@@ -4,6 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import java.time.LocalDate
 
 class Database(val context:Context): SQLiteOpenHelper(context,DATABASE_NAME,null,DATABES_VER) {
@@ -49,7 +50,7 @@ class Database(val context:Context): SQLiteOpenHelper(context,DATABASE_NAME,null
     }
 */
 
-    val List: List<Event>
+    val List: ArrayList<Event>
         get() {
 
             val lstEvent = ArrayList<Event>()
@@ -91,6 +92,21 @@ fun saveInfo( context: Context) { Toast.makeText(context,"pomyslnie dodano wydar
        db.close()
 
    }
+    fun update_event (event: Event,id: String){
+
+        val db=writableDatabase
+        val values = ContentValues()
+        values.put(COL_STATUS,event.status)
+        values.put(COL_DESC,event.desc)
+        values.put(COL_TITLE,event.title)
+        values.put(COL_PRIO,event.prio)
+        values.put(COL_DATE_EVENT,event.dateeve)
+
+        db.update(TABLE_NAME,values,"$COL_ID=?", arrayOf(id))
+        Toast.makeText(context,"Pomyślnie wyedytowano wydarzenie",Toast.LENGTH_SHORT).show()
+        db.close()
+
+    }
 
   fun del_even(id: String){
 
@@ -99,6 +115,8 @@ fun saveInfo( context: Context) { Toast.makeText(context,"pomyslnie dodano wydar
      db.delete(TABLE_NAME,"$COL_ID=?", arrayOf(id))
       Toast.makeText(context,"Pomyślnie usunięto wydarzenie",Toast.LENGTH_SHORT).show()
       db.close()
+
+
 
 
   }

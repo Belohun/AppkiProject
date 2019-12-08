@@ -6,16 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.events.*
-import kotlinx.android.synthetic.main.tasks.*
-import kotlinx.android.synthetic.main.tasks.prio
-import android.util.Log
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,15 +29,12 @@ class MainActivity : AppCompatActivity() {
         refreshdata(this)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu,menu);
+        menuInflater.inflate(R.menu.menu,menu)
         return true
     }
-  /*  fun backtomain() {
-        val intent = Intent(this, activity_main::class.java)
-        startActivity(intent)
-    }*/
-    fun createNewEvent(){
-        val intent = Intent(this, AddEvent::class.java)
+
+    fun createNewEvent() {
+        val intent = Intent(this@MainActivity, AddEvent::class.java)
         startActivity(intent)
 
     }
@@ -63,8 +53,7 @@ class MainActivity : AppCompatActivity() {
       fun refreshdata(context: Context){
         llstEvent=db.List
         recyclerView.layoutManager=LinearLayoutManager(context,RecyclerView.VERTICAL,false)
-        val adapter =eventAdapter(context,llstEvent)
+        val adapter =eventAdapter(context, llstEvent as ArrayList<Event>)
         recyclerView.adapter = adapter
     }
-
 }
